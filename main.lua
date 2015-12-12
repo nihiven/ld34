@@ -3,11 +3,8 @@
 --[[ some variables ]]--
 g = { -- all game related values
 	debug = true,
-	time = {
-		now = 1000, -- 1 is game over
-		factor = .1, -- time decrease factor
-		tick = 0
-	}
+	timeLimit = 180,
+	timeElapsed = 0
 }
 
 entities = {} -- all game entities
@@ -16,6 +13,7 @@ messages = {
 	queue = {},
 	
 	add = function(self, _t, _d)
+		_d = _d or true
 		table.insert(self.queue, {duration = 2, drawn = false, text = _t, destroy = _d})
 	end,
 	
@@ -55,18 +53,18 @@ require 'debug'
 
 ------[[ Love callbacks ]]------
 function love.load()
-	--love.window.setMode(3440, 1440, {fsaa=16, fullscreen=true, resizable=false, vsync=true})
+	love.window.setMode(3440, 1440, {fsaa=16, fullscreen=true, resizable=false, vsync=true})
 
 	-- load stuff
 	-- eventually: ui.font = love.graphics.setNewFont("font.ttf", 18)	
 
 	-- test junk below
-	table.insert(entities, starfield)
-	table.insert(entities, dot)
-	table.insert(entities, debug)
 	table.insert(entities, messages)
+	table.insert(entities, debug)
+	table.insert(entities, dot)
+	table.insert(entities, starfield)
 
-	callEntities('load')
+	callEntities('load', g)
 	_m('love.load() complete')
 end
 
@@ -76,9 +74,9 @@ function love.draw()
 end
 
 function love.update(_dt)
-	g.time.now = g.time.now + _dt
-
 	--- send updates to entities
+	g.timeElapsed = g.timeElapsed + _dt
+	_m(g.timeElapsed)
 	callEntities('update', {dt = _dt})
 end
 
