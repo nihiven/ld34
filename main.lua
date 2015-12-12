@@ -2,15 +2,41 @@
 
 --[[ some variables ]]--
 g = { -- all game related values
+	debug = true,
 	time = {
-		now = 100, -- 100 is starting, 1 is game over
-		factor = 10, -- time increase factor
+		now = 1000, -- 1 is game over
+		factor = .1, -- time decrease factor
 		tick = 0
 	}
 }
 
 entities = {} -- all game entities
-messages = {} -- messages to the player
+-- messages to the player
+messages = {
+	queue = {},
+	
+	add = function(self, _t, _d)
+		table.insert(self.queue, {duration = 2, drawn = false, text = _t, destroy = _d})
+	end,
+	
+	draw = function(self)
+		local y = 10
+		for i = #self.queue, 1, -1 do
+			_sc(colors.white)
+			love.graphics.printf(self.queue[i].text, 10, y, love.window.getWidth(), "left")
+			self.queue[i].drawn = true
+			y = y + 20
+		end
+	end,
+	update = function(self, _p)
+		for i = #self.queue, 1, -1 do
+			self.queue[i].duration = self.queue[i].duration - _p.dt
+			if (self.queue[i].duration <= 0 or (self.queue[i].destroy and self.queue[i].drawn)) then 
+				table.remove(self.queue, i)
+			end
+		end
+	end
+} 
 
 colors = {}
 colors.white = {255, 255, 255}
@@ -18,88 +44,54 @@ colors.black = {0, 0, 0}
 colors.skyBlue = {135, 206, 235}
 colors.deepSkyBlue = { 0, 191, 255}
 
--- the dot
-dot = {
-	maxRadius = 1000,
-}
-
 -- ui 
 ui = {} -- ui 'object'
 
 
+--[[ Entities ]]--
+require 'starfield'
+require 'dot'
+require 'debug'
 
 ------[[ Love callbacks ]]------
 function love.load()
-	-- ui
-	ui.scr = 
-	{
-		width = love.graphics.getWidth(),
-		height = love.graphics.getHeight(),
-		midX = love.graphics.getWidth() / 2,
-		midY = love.graphics.getHeight() / 2
-	}
+	--love.window.setMode(3440, 1440, {fsaa=16, fullscreen=true, resizable=false, vsync=true})
 
 	-- load stuff
 	-- eventually: ui.font = love.graphics.setNewFont("font.ttf", 18)	
 
 	-- test junk below
+	table.insert(entities, starfield)
 	table.insert(entities, dot)
+	table.insert(entities, debug)
+	table.insert(entities, messages)
+
+	callEntities('load')
+	_m('love.load() complete')
 end
 
 function love.draw()
-	drawEntities()
-
-	-- test junk
-	drawDebug()
+	callEntities('draw')
+	if (g.debug) then	callEntities('debug')	end
 end
 
-function love.update(dt)
-	-- i think we'll control the global time value here.
-	-- this will control all movement and will be 1-100?
-	g.time.tick = globals
+function love.update(_dt)
+	g.time.now = g.time.now + _dt
 
 	--- send updates to entities
-	updateEntities(love.timer.getTime(), love.timer.getDelta())
+	callEntities('update', {dt = _dt})
 end
 
 
 
 ------[[ game functions ]]------
-function drawEntities()
+function callEntities(_f, _p)
 	-- check for and call each entity's draw()
 	for i = #entities, 1, -1 do
-		if (entities[i].draw ~= nil) then
-			entities[i].draw()
+		if (entities[i][_f] ~= nil) then
+			entities[i][_f](entities[i], _p)
 		end		
 	end
-end
-
-function updateEntities(_t, _dt)
-	-- check for and call each entity's draw()
-	for i = #entities, 1, -1 do
-		if (entities[i].update ~= nil) then
-			entities[i].update(_t, _dt)
-		end
-	end
-end
-
-
-------[[ entity functions ]]------
-function dot.draw()
-	-- determine sized based on g.time
-	local radius = dot.maxRadius / g.time.now
-
-
-	-- draw the dot
-	_sc(colors.skyBlue)
-	love.graphics.circle('fill', ui.scr.midX, ui.scr.midX, radius, 512)
-	_sc(colors.deepSkyBlue)
-	love.graphics.circle('fill', ui.scr.midX, ui.scr.midX, radius-(5 / g.time.now), 512)
-	
-end
-
-function dot.update(_t, _dt)
-	
 end
 
 
@@ -114,17 +106,11 @@ function _sc(_color)
 	love.graphics.setColor(_color)
 end
 
-
-
-------[[ debug functions ]]------
-function drawDebug()
-	if (g.debug == false) then return end
-
-	_pf(love.timer.getFPS(), 10, 10, 100, "left", colors.white)
---	_pf(g.time.now, 10, 30, 100, "left", colors.white)
---	_pf(g.time.tick, 10, 50, 100, "left", colors.white)
+function _scrMid()
+	return {x = love.graphics.getWidth() / 2, y = love.graphics.getHeight() / 2}
 end
 
-		
-
-
+function _m(_t, _d)
+	_d = _d or false
+	messages.add(messages, _t, _d)
+end
