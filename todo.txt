@@ -3,11 +3,24 @@ game mechanics
   : slow dot
   : fast dot
 
-read font rules
+add background to in game menu
+change display of / and *
+
+
+
+
 
 ok to use: local menu = menu
 
 
-score tracking,
- incorrect per etc
- 
+
+
+				if (oper == '/') then -- no fractions
+					op2, ans = math.random(1,9), math.random(1,9)
+					op1 = op2 * ans
+				else
+					op1, op2 = math.random(1,9), math.random(1,9)
+
+					if (op1 < op2 and oper == '-') then -- no negative answers
+						op1, op2 = op2, op1
+					end

@@ -11,14 +11,13 @@ game = {
 	-- scoring
 	score = 0,
 	scoreBase = 100,
-	scoreMultiplier = 1, -- multiplier * level
+	scoreMultiplier = 1.5, -- multiplier * level
 	correct = 0,
 	incorrect = 0,
 
 	-- levels
 	level = 1,
-	levelMax = 3,
-	levelProblems = 20,
+	levelMax = 4,
 
 	newgame = function(self) -- fix please
 		self.paused = false

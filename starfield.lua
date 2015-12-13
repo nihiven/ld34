@@ -3,14 +3,15 @@ starfield = {
 	stars = {},
 	moreStars = {},
 	load = function(self)
-		for i = 1000, 1, -1 do
+		for i = 1500, 1, -1 do
 			local c = math.random(50, 150)
 			self.stars[i] = { x = math.random(love.graphics.getWidth()), y = math.random(love.graphics.getHeight()), color = {c, c, c} }
 		end
 
-		for i = 500, 1, -1 do
+		for i = 1000, 1, -1 do
 			local c = math.random(50, 150)
 			self.moreStars[i] = { x = math.random(love.graphics.getWidth()), y = math.random(love.graphics.getHeight()), color = {c, c, c} }
+			self.moreStars[i].scale = math.random(1,3)
 		end
 
 	end,
@@ -40,8 +41,8 @@ starfield = {
 
 	update = function(self, _p)
 		for i = #self.moreStars, 1, -1 do
-			self.moreStars[i].x = self.moreStars[i].x + _p.dt * 3
-			self.moreStars[i].y = self.moreStars[i].y + _p.dt * 2
+			self.moreStars[i].x = self.moreStars[i].x + (_p.dt * self.moreStars[i].scale)
+			self.moreStars[i].y = self.moreStars[i].y + (_p.dt * self.moreStars[i].scale)
 		end
 	end,
 
