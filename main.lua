@@ -8,43 +8,14 @@ require('game')
 require('starfield')
 require('dot')
 require('menu')
-
--- it's game time
-problems = {}
-
---- this will handle game logic, key presses etc during play
-logic = {
-	paused = false,
-
-	newgame = function(self)
-		local m = menu
-		m.enabled = false
-		m.canDismiss = true
-		m.inGame = true
-		m.items = {
-			{ text = 'Restart', action = 'newgame' },
-			{ text = 'Quit', action = 'quit' }
-		}
-
-		entities = { m, messages, dot, starfield, logic }
-		callEntities('load', game) -- start with a fresh game object
-	end,
-
-	gamepaused = function(self)
-		self.paused = true
-	end,
-
-	gameresumed = function(self)
-		self.paused = false
-	end
-}
+require('logic')
 
 -- initial entities
-entities = { menu, messages, logic } -- all game entities
+entities = { menu, messages } -- all game entities
 
 ------[[ Love callbacks ]]------
 function love.load()
-	love.window.setMode(3440, 1440, {fsaa=16, fullscreen=true, resizable=false, vsync=true})
+	love.window.setMode(3440, 1440, { fsaa=16, fullscreen=true, resizable=false, vsync=true })
 
 	-- load stuff
 	callEntities('load', game)
@@ -54,14 +25,17 @@ end
 
 function love.draw()
 	callEntities('draw')
-	if (game.debug) then	callEntities('debug')	end
+
+	if (debug == true) then 
+		_m(game.timeElapsed)
+		callEntities('debug')
+	end
 end
 
 function love.update(_dt)
 	--- send updates to entities
 	game.timeElapsed = game.timeElapsed + _dt
-	_m(game.timeElapsed)
-	callEntities('update', {dt = _dt})
+	callEntities('update', {dt = _dt, g = game})
 end
 
 
@@ -102,13 +76,24 @@ end
 
 
 ------[[ helper functions ]]------
-function _pf(_text, _x, _y, _w, _align, _color)
+function _pf(_text, _x, _y, _w, _align, _color, _font)
+	local offset = 0
+
+	if (_font ~= nil) then 
+		love.graphics.setFont(_font)
+		offset = _font:getHeight() / 2
+	end
+	
 	_sc(_color)
-	love.graphics.printf(_text, _x, _y, _w, _align)
+	love.graphics.printf(_text, _x, _y - offset, _w, _align)
 end
 
 function _sc(_color)
 	love.graphics.setColor(_color)
+end
+
+function _pfc(_text, _color, _font)
+	_pf(_text, 0, _scrMid().y, love.graphics.getWidth(), 'center', _color, _font)
 end
 
 function _scrMid()

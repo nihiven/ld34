@@ -51,5 +51,17 @@ menu = {
 
 	menuopen = function(self, _p)
 		self.enabled = true
+	end,
+
+	menuclose = function(self)
+		self.enabled = false
+	end,
+
+	gameresumed = function(self)
+		self.enabled = false
+	end,
+
+	newgame = function()
+		logic.newgame()
 	end
 }

@@ -12,14 +12,24 @@ dot = {
 		self.xStep = self.xTravel / _g.timeLimit
 		self.yStep = self.yTravel / _g.timeLimit 
 		
+		self.scaleFactor = 1
+
 		self.radiusMax = love.graphics.getWidth() * 0.55
 		self.radiusStep = self.radiusMax / _g.timeLimit
 
+		-- for image
+		--self.image = love.graphics.newImage('need_to_replace_earth.png')
 	end,
 
 	draw = function(self)
-		love.graphics.setColor(colors.skyBlue)
+		-- draw a nice circle
+		love.graphics.setColor(colors.deepSkyBlue)
 		love.graphics.circle('fill', self.x, self.y, self.radius, 4096)
+
+		--- draw earth
+		love.graphics.setColor(colors.white)
+		self.offset = (self.scaleFactor * ((love.graphics.getWidth() / 2790) * 2790)) / 2
+		--love.graphics.draw(self.image, self.x, self.y, 0, self.scaleFactor, self.scaleFactor, self.offset, self.offset)
 	end,
 
 	update = function(self, _p)
@@ -29,6 +39,9 @@ dot = {
 		self.x = self.x - (self.xStep * _p.dt)
 		self.y = self.y - (self.yStep * _p.dt)
 		self.radius = self.radius + (self.radiusStep * _p.dt)
+
+		-- for image
+		self.scaleFactor = (_p.g.timeElapsed / _p.g.timeLimit) * (love.graphics.getWidth() / 2790)
 	end,
 
 	gamepaused = function(self)
@@ -40,6 +53,7 @@ dot = {
 	end,
 
 	debug = function(self, _q)
+		_m(self.offset)
 		_m(self.radius .. ' of ' .. self.radiusMax .. ' at ' .. self.x .. ',' .. self.y)
 	end
 

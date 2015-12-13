@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"random",
+				"love.math.getRandomSeed"
+			],
+			[
 				"SM_",
 				"SM_LENGTH"
 			],
@@ -59,7 +63,7 @@
 			"file": "main.lua",
 			"settings":
 			{
-				"buffer_size": 2430,
+				"buffer_size": 4219,
 				"line_ending": "Windows"
 			}
 		},
@@ -75,7 +79,7 @@
 			"file": "menu.lua",
 			"settings":
 			{
-				"buffer_size": 1533,
+				"buffer_size": 1698,
 				"line_ending": "Windows"
 			}
 		},
@@ -83,7 +87,7 @@
 			"file": "dot.lua",
 			"settings":
 			{
-				"buffer_size": 1145,
+				"buffer_size": 1536,
 				"line_ending": "Windows"
 			}
 		},
@@ -116,7 +120,7 @@
 			"file": "todo.txt",
 			"settings":
 			{
-				"buffer_size": 75,
+				"buffer_size": 105,
 				"line_ending": "Windows"
 			}
 		}
@@ -177,14 +181,14 @@
 	},
 	"file_history":
 	[
+		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/main.lua",
+		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/items.lua",
 		"/E/Google Drive/Code/ld34/cupid.lua",
 		"/E/Google Drive/Code/ld34/.gitignore",
-		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/main.lua",
 		"/E/Google Drive/Code/ld34/README.md",
 		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/colors.lua",
 		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/conf.lua",
 		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/feria.lua",
-		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/items.lua",
 		"/E/Google Drive/Code/ld34/debug.lua",
 		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/todo.txt",
 		"/C/Users/nihiven/AppData/Roaming/mIRC/advent/7data.txt",
@@ -365,7 +369,7 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -373,15 +377,15 @@
 					"file": "main.lua",
 					"settings":
 					{
-						"buffer_size": 2430,
+						"buffer_size": 4219,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1330,
-								1330
+								2183,
+								2183
 							]
 						],
 						"settings":
@@ -390,7 +394,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 462.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -427,15 +431,15 @@
 					"file": "menu.lua",
 					"settings":
 					{
-						"buffer_size": 1533,
+						"buffer_size": 1698,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								649,
-								649
+								400,
+								366
 							]
 						],
 						"settings":
@@ -454,15 +458,15 @@
 					"file": "dot.lua",
 					"settings":
 					{
-						"buffer_size": 1145,
+						"buffer_size": 1536,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								912,
-								916
+								805,
+								805
 							]
 						],
 						"settings":
@@ -515,8 +519,8 @@
 						"selection":
 						[
 							[
-								1215,
-								1215
+								0,
+								0
 							]
 						],
 						"settings":
@@ -568,15 +572,15 @@
 					"file": "todo.txt",
 					"settings":
 					{
-						"buffer_size": 75,
+						"buffer_size": 105,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								14,
-								14
+								105,
+								105
 							]
 						],
 						"settings":

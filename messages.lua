@@ -27,4 +27,17 @@ messages = {
 			end
 		end
 	end
-} 
+}
+
+showyMessages = {
+	queue = {},
+	
+	clear = function(self)
+		self.queue = {}
+	end,
+
+	add = function(self, _text, _duration, _x, _y, _color)
+		table.insert(self.queue)
+	end
+
+} -- yeah...

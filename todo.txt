@@ -4,3 +4,10 @@ game mechanics
   : fast dot
 
 read font rules
+
+ok to use: local menu = menu
+
+
+score tracking,
+ incorrect per etc
+ 
