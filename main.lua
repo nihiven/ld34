@@ -1,40 +1,18 @@
 ------[[ Ludum Dare #34 - "growing" - the dot ? ]]------
 
 --[[ some variables ]]--
-g = { -- all game related values
+game = { -- all game related values
 	debug = true,
 	timeLimit = 180,
-	timeElapsed = 0
+	timeElapsed = 0,
+
+	load = function()
+		entities = { messages, debug, dot, starfield }
+	end
 }
 
-entities = {} -- all game entities
+entities = { menu, messages } -- all game entities
 -- messages to the player
-messages = {
-	queue = {},
-	
-	add = function(self, _t, _d)
-		_d = _d or true
-		table.insert(self.queue, {duration = 2, drawn = false, text = _t, destroy = _d})
-	end,
-	
-	draw = function(self)
-		local y = 10
-		for i = #self.queue, 1, -1 do
-			_sc(colors.white)
-			love.graphics.printf(self.queue[i].text, 10, y, love.window.getWidth(), "left")
-			self.queue[i].drawn = true
-			y = y + 20
-		end
-	end,
-	update = function(self, _p)
-		for i = #self.queue, 1, -1 do
-			self.queue[i].duration = self.queue[i].duration - _p.dt
-			if (self.queue[i].duration <= 0 or (self.queue[i].destroy and self.queue[i].drawn)) then 
-				table.remove(self.queue, i)
-			end
-		end
-	end
-} 
 
 colors = {}
 colors.white = {255, 255, 255}
@@ -47,42 +25,41 @@ ui = {} -- ui 'object'
 
 
 --[[ Entities ]]--
+require 'messages'
 require 'starfield'
 require 'dot'
-require 'debug'
 
-------[[ Love callbacks ]]------
+
+------[[  callbacks ]]------
 function love.load()
 	love.window.setMode(3440, 1440, {fsaa=16, fullscreen=true, resizable=false, vsync=true})
 
 	-- load stuff
-	-- eventually: ui.font = love.graphics.setNewFont("font.ttf", 18)	
+	callEntities('load')
 
-	-- test junk below
-	table.insert(entities, messages)
-	table.insert(entities, debug)
-	table.insert(entities, dot)
-	table.insert(entities, starfield)
-
-	callEntities('load', g)
 	_m('love.load() complete')
 end
 
 function love.draw()
 	callEntities('draw')
-	if (g.debug) then	callEntities('debug')	end
+	if (game.debug) then	callEntities('debug')	end
 end
 
 function love.update(_dt)
 	--- send updates to entities
-	g.timeElapsed = g.timeElapsed + _dt
-	_m(g.timeElapsed)
+	game.timeElapsed = game.timeElapsed + _dt
+	_m(game.timeElapsed)
 	callEntities('update', {dt = _dt})
 end
 
 
+function love.keypressed(_k)
+	callEntities('keypressed', {k = _k})
+end
 
-------[[ game functions ]]------
+
+
+------[[ entity functions ]]------
 function callEntities(_f, _p)
 	-- check for and call each entity's draw()
 	for i = #entities, 1, -1 do
@@ -91,7 +68,6 @@ function callEntities(_f, _p)
 		end		
 	end
 end
-
 
 
 ------[[ helper functions ]]------

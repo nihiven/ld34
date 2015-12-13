@@ -1,5 +1,4 @@
 dot = {
-
 	load = function(self, _g)
 		self.radius = 1
 		self.x = love.graphics.getWidth() * 0.9
@@ -29,7 +28,7 @@ dot = {
 	end,
 
 	debug = function(self, _q)
-		_m(self.radius .. ' of ' .. self.radiusMax .. ' at ' .. self.x .. ',' .. self.y,true)
+		_m(self.radius .. ' of ' .. self.radiusMax .. ' at ' .. self.x .. ',' .. self.y)
 	end
 
 }

@@ -1,5 +1,4 @@
 game mechanics
- - growing dot
  - how to control
   : slow dot
   : fast dot

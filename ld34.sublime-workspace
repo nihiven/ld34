@@ -59,7 +59,23 @@
 			"file": "main.lua",
 			"settings":
 			{
-				"buffer_size": 1886,
+				"buffer_size": 2748,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/main.lua",
+			"settings":
+			{
+				"buffer_size": 13708,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "messages.lua",
+			"settings":
+			{
+				"buffer_size": 767,
 				"line_ending": "Windows"
 			}
 		},
@@ -67,7 +83,7 @@
 			"file": "dot.lua",
 			"settings":
 			{
-				"buffer_size": 580,
+				"buffer_size": 968,
 				"line_ending": "Windows"
 			}
 		},
@@ -83,7 +99,7 @@
 			"file": "todo.txt",
 			"settings":
 			{
-				"buffer_size": 90,
+				"buffer_size": 75,
 				"line_ending": "Windows"
 			}
 		}
@@ -144,11 +160,12 @@
 	},
 	"file_history":
 	[
+		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/main.lua",
+		"/E/Google Drive/Code/ld34/README.md",
 		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/colors.lua",
 		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/conf.lua",
 		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/feria.lua",
 		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/items.lua",
-		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/main.lua",
 		"/E/Google Drive/Code/ld34/debug.lua",
 		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/todo.txt",
 		"/C/Users/nihiven/AppData/Roaming/mIRC/advent/7data.txt",
@@ -234,6 +251,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"screen",
+			"dot",
 			"globals",
 			"dt",
 			"print",
@@ -333,41 +352,15 @@
 					"file": "main.lua",
 					"settings":
 					{
-						"buffer_size": 1886,
+						"buffer_size": 2748,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1457,
-								1457
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 180.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "dot.lua",
-					"settings":
-					{
-						"buffer_size": 580,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								543,
-								543
+								1206,
+								1206
 							]
 						],
 						"settings":
@@ -381,7 +374,87 @@
 					"type": "text"
 				},
 				{
+					"buffer": 1,
+					"file": "/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/main.lua",
+					"settings":
+					{
+						"buffer_size": 13708,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7091,
+								7059
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4272.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
 					"buffer": 2,
+					"file": "messages.lua",
+					"settings":
+					{
+						"buffer_size": 767,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								488,
+								467
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "dot.lua",
+					"settings":
+					{
+						"buffer_size": 968,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								959,
+								959
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "starfield.lua",
 					"settings":
 					{
@@ -392,8 +465,8 @@
 						"selection":
 						[
 							[
-								48,
-								48
+								422,
+								422
 							]
 						],
 						"settings":
@@ -413,19 +486,19 @@
 			"sheets":
 			[
 				{
-					"buffer": 3,
+					"buffer": 5,
 					"file": "todo.txt",
 					"settings":
 					{
-						"buffer_size": 90,
+						"buffer_size": 75,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								64,
-								64
+								14,
+								14
 							]
 						],
 						"settings":
