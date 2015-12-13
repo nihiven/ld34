@@ -3,7 +3,7 @@ menu = {
 	canDismiss = false,
 	inGame = false,
 	selected = 1,
-	font = love.graphics.setNewFont('neon.ttf', 128), 
+	font = fonts.heavyLarge, 
 	items = {
 		{ text = 'THE DOT', action = 'newgame' },
 		{ text = 'quit', action = 'quit' }

@@ -88,7 +88,7 @@ logic = {
 	problems = {},
 	problemsSolved = {},
 
-	font = love.graphics.setNewFont('neon.ttf', 128), 
+	font = fonts.neonSmall, 
 
 	-- answer processing
 	entry = '',

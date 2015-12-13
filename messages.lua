@@ -1,6 +1,6 @@
 messages = {
 	queue = {},
-	font = love.graphics.setNewFont('neon.ttf', 24),
+	font = fonts.neonSmall,
 
 	add = function(self, _t, _d)
 		_d = _d or true
