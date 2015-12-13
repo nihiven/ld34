@@ -3,7 +3,7 @@ menu = {
 	canDismiss = false,
 	inGame = false,
 	selected = 1,
-	font = fonts.heavyLarge, 
+	font = fonts.large, 
 	items = {
 		{ text = 'THE DOT', action = 'newgame' },
 		{ text = 'quit', action = 'quit' }

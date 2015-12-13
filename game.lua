@@ -12,6 +12,8 @@ game = {
 	score = 0,
 	scoreBase = 100,
 	scoreMultiplier = 1.5, -- multiplier * level
+	scoreSpeedTime = 3, -- must answer in value seconds to get % of bonus
+	scoreSpeedMultiplier = 2, -- value is 100% of the bonus
 	correct = 0,
 	incorrect = 0,
 
@@ -29,13 +31,14 @@ game = {
 		-- scoring
 		self.score = 0
 		self.scoreBase = 100
-		self.scoreMultiplier = 1 -- multiplier * level
+		self.scoreMultiplier = 1.5 -- multiplier * level
+		self.scoreSpeedTime = 3, -- must answer in value seconds to get % of bonus
+		self.scoreSpeedMultiplier = 3
 		self.correct = 0
 		self.incorrect = 0
 
 		-- levels
 		self.level = 1
-		self.levelMax = 3
-		self.levelProblems = 20
+		self.levelMax = 4
 	end
 }

@@ -1,5 +1,5 @@
 ------[[ Ludum Dare #34 - "growing" - the dot ? ]]------
-debug = true
+debug = false
 
 --[[ Entities ]]--
 require('colors')
@@ -11,7 +11,7 @@ require('menu')
 require('logic')
 
 -- initial entities
-entities = { menu, messages } -- all game entities
+entities = { menu, messages, starfield } -- all game entities
 
 ------[[ Love callbacks ]]------
 function love.load()
@@ -62,6 +62,10 @@ end
 
 function love.handlers.newgame()
 	callEntities('newgame')
+end
+
+function love.handlers.scoremessage(_text)
+	callEntities('scoremessage', {text = _text})
 end
 
 ------[[ entity functions ]]------

@@ -1,6 +1,6 @@
 messages = {
 	queue = {},
-	font = fonts.neonSmall,
+	font = fonts.small,
 
 	add = function(self, _t, _d)
 		_d = _d or true

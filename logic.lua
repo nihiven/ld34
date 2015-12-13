@@ -22,7 +22,7 @@ problems = {
 				
 				a = loadstring('ans = ' .. op1 .. '' .. oper .. '' .. op2)
 				a()
-				table.insert(queue, { operator1 = op1, operator2 = op2, operator = oper, answer = ans, level = _level, incorrect = 0})
+				table.insert(queue, { operator1 = op1, operator2 = op2, operator = oper, answer = ans, level = _level, incorrect = 0, age = 0})
 			end
 		elseif (_level == 2) then
 			-- single digit multiplication and division
@@ -40,7 +40,7 @@ problems = {
 				
 				a = loadstring('ans = ' .. op1 .. '' .. oper .. '' .. op2)
 				a()
-				table.insert(queue, { operator1 = op1, operator2 = op2, operator = oper, answer = ans, level = _level, incorrect = 0})
+				table.insert(queue, { operator1 = op1, operator2 = op2, operator = oper, answer = ans, level = _level, incorrect = 0, age = 0})
 			end
 		elseif (_level == 3) then
 			-- double digit addition and subtraction
@@ -56,7 +56,7 @@ problems = {
 
 				a = loadstring('ans = ' .. op1 .. '' .. oper .. '' .. op2)
 				a()
-				table.insert(queue, { operator1 = op1, operator2 = op2, operator = oper, answer = ans, level = _level, incorrect = 0})
+				table.insert(queue, { operator1 = op1, operator2 = op2, operator = oper, answer = ans, level = _level, incorrect = 0, age = 0})
 			end			
 		elseif (_level == 4) then
 			-- double digit multiplication and division
@@ -74,7 +74,7 @@ problems = {
 				
 				a = loadstring('ans = ' .. op1 .. '' .. oper .. '' .. op2)
 				a()
-				table.insert(queue, { operator1 = op1, operator2 = op2, operator = oper, answer = ans, level = _level, incorrect = 0})
+				table.insert(queue, { operator1 = op1, operator2 = op2, operator = oper, answer = ans, level = _level, incorrect = 0, age = 0})
 			end
 		end
 
@@ -87,8 +87,6 @@ logic = {
 	paused = false,
 	problems = {},
 	problemsSolved = {},
-
-	font = fonts.neonSmall, 
 
 	-- answer processing
 	entry = '',
@@ -104,7 +102,7 @@ logic = {
 			{ text = 'Quit', action = 'quit' }
 		}
 
-		entities = { menu, messages, logic, dot, starfield }
+		entities = { menu, messages, ui, logic, dot, starfield }
 		callEntities('load', game) -- start with a fresh game object
 	end,
 
@@ -112,12 +110,17 @@ logic = {
 		self.problems = problems.generate(game.level)
 	end,
 
+	update = function(self, _p)
+		if (self.paused == true) then return end
+		self.problems[1].age = self.problems[1].age + _p.dt
+	end,
+
 	draw = function(self)
 		local p = self.problems[1]
 		local ed = self.entry
 		if (ed == '') then ed = '_' end
 		local eq = p.operator1 .. ' ' .. p.operator .. ' ' .. p.operator2 .. ' = ' .. ed
-		_pfc(eq, colors.white, self.font)
+		_pfc(eq, colors.white, fonts.large)
 	end,
 
 	keypressed = function(self, _p)
@@ -141,12 +144,23 @@ logic = {
 				-- clear entry buffer
 				self.entry = ''
 
-				-- calculate score
-				local points = game.scoreBase * game.scoreMultiplier * self.problems[1].level
+				-- calculate score as steps so you can add messages
+				local points = game.scoreBase 
+				points = points * game.scoreMultiplier 
+				points = points * self.problems[1].level
+				
+				if (self.problems[1].age < game.scoreSpeedTime) then 
+					points = points * tonumber(game.scoreSpeedMultiplier)
+					love.event.push('scoremessage', 'TIME BONUS: +' .. tostring(100*tonumber(game.scoreSpeedMultiplier)) .. '%')
+					
+				end
+
+				love.event.push('scoremessage', '+' .. tostring(points))
+
 				game.score = game.score + points
 				game.correct = game.correct + 1
 
-				-- archive and set next problem
+				-- archive and remove solved problem
 				table.insert(self.problemsSolved, self.problems[1])
 				table.remove(self.problems, 1)
 
@@ -175,12 +189,68 @@ logic = {
 	end,
 
 	debug = function(self)
-		_m(self.entry .. ' : ' .. self.problems[1].answer)
-		_m(game.score)
-		_m(game.level)
+		_m('Answer: ' .. self.problems[1].answer)
+		_m('Score: ' .. game.score)
+		_m('Level: ' .. game.level)
 	end
 }
 
-ui = {
+ui = {	
+	scoreMessages = {},
+
+	draw = function(self)
+		local score = string.rep('0', 6-#tostring(game.score)) .. tostring(game.score)
+		local sw = love.graphics.getWidth()
+
+		-- draw stats
+		love.graphics.setFont(fonts.large)
+
+		love.graphics.setColor(colors.uiShadow)
+		love.graphics.printf('Score: ' .. score, 15+3, 15+3, sw, 'left')
+		love.graphics.printf('Level: ' .. game.level, -15+3, 15+3, sw, 'right')
+
+		love.graphics.setColor(colors.ui)
+		love.graphics.printf('Score: ' .. score, 15, 15, sw, 'left')
+		love.graphics.printf('Level: ' .. game.level, -15, 15, sw, 'right')
+
+		-- draw score messages
+		local offset = fonts.large:getHeight()
+		for i = #self.scoreMessages, 1, -1 do
+			local m = self.scoreMessages[i]
+
+			local c = colors.uiScoreMessage
+			c[4] = m.alpha
+
+			love.graphics.setColor(c)
+			love.graphics.printf(m.text, 0, m.y - offset, sw, 'center', 0)
+			offset = offset + fonts.large:getHeight()
+		end
+
+	end,
+
+	update = function(self, _p)
+		for i = #self.scoreMessages, 1, -1 do
+			local m = self.scoreMessages[i]
+
+			if (m.age <= 0) then 
+				self.scoreMessages[i].fade = m.fade - _p.dt
+				self.scoreMessages[i].alpha = self.scoreMessages[i].fade * 255
+			end
+
+			self.scoreMessages[i].age = m.age - _p.dt
+			self.scoreMessages[i].y = m.y - (_p.dt * 100)
+
+			if (m.fade <= 0) then
+				table.remove(self.scoreMessages, i)
+			end
+		end		
+	end,
+
+	scoremessage = function(self, _p)
+		local message = { text = _p.text, age = 1, fade = 1, y = 0, scale = 1 }
+		message.y = love.graphics.getHeight() * .4
+
+		table.insert(self.scoreMessages, message)
+	end
 	
 }
