@@ -1,4 +1,6 @@
 dot = {
+	paused = false,
+
 	load = function(self, _g)
 		self.radius = 1
 		self.x = love.graphics.getWidth() * 0.9
@@ -7,7 +9,7 @@ dot = {
 		self.yFinal = love.graphics.getHeight() / 2
 		self.xTravel = self.x - self.xFinal
 		self.yTravel = self.y - self.yFinal
-		self.xStep = self.xTravel / _g.timeLimit 
+		self.xStep = self.xTravel / _g.timeLimit
 		self.yStep = self.yTravel / _g.timeLimit 
 		
 		self.radiusMax = love.graphics.getWidth() * 0.55
@@ -21,10 +23,20 @@ dot = {
 	end,
 
 	update = function(self, _p)
+		if (self.paused == true) then return end
+
 		local fps = love.timer.getFPS()
 		self.x = self.x - (self.xStep * _p.dt)
 		self.y = self.y - (self.yStep * _p.dt)
 		self.radius = self.radius + (self.radiusStep * _p.dt)
+	end,
+
+	gamepaused = function(self)
+		self.paused = true
+	end,
+
+	gameresumed = function(self)
+		self.paused = false
 	end,
 
 	debug = function(self, _q)

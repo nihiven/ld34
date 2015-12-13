@@ -18,6 +18,7 @@ messages = {
 			y = y + self.font:getHeight()
 		end
 	end,
+
 	update = function(self, _p)
 		for i = #self.queue, 1, -1 do
 			self.queue[i].duration = self.queue[i].duration - _p.dt

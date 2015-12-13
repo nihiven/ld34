@@ -59,23 +59,23 @@
 			"file": "main.lua",
 			"settings":
 			{
-				"buffer_size": 2748,
+				"buffer_size": 2430,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/main.lua",
+			"file": "game.lua",
 			"settings":
 			{
-				"buffer_size": 13708,
+				"buffer_size": 105,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "messages.lua",
+			"file": "menu.lua",
 			"settings":
 			{
-				"buffer_size": 767,
+				"buffer_size": 1533,
 				"line_ending": "Windows"
 			}
 		},
@@ -83,7 +83,15 @@
 			"file": "dot.lua",
 			"settings":
 			{
-				"buffer_size": 968,
+				"buffer_size": 1145,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "messages.lua",
+			"settings":
+			{
+				"buffer_size": 768,
 				"line_ending": "Windows"
 			}
 		},
@@ -91,8 +99,17 @@
 			"file": "starfield.lua",
 			"settings":
 			{
-				"buffer_size": 557,
+				"buffer_size": 1413,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "colors.lua",
+			"settings":
+			{
+				"buffer_size": 136,
+				"line_ending": "Windows",
+				"name": "colors = {}"
 			}
 		},
 		{
@@ -160,6 +177,8 @@
 	},
 	"file_history":
 	[
+		"/E/Google Drive/Code/ld34/cupid.lua",
+		"/E/Google Drive/Code/ld34/.gitignore",
 		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/main.lua",
 		"/E/Google Drive/Code/ld34/README.md",
 		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/colors.lua",
@@ -251,6 +270,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"game",
+			"gmae",
 			"screen",
 			"dot",
 			"globals",
@@ -344,7 +365,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -352,20 +373,21 @@
 					"file": "main.lua",
 					"settings":
 					{
-						"buffer_size": 2748,
+						"buffer_size": 2430,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1206,
-								1206
+								1330,
+								1330
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Lua/Lua.tmLanguage"
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -375,18 +397,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/main.lua",
+					"file": "game.lua",
 					"settings":
 					{
-						"buffer_size": 13708,
+						"buffer_size": 105,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7091,
-								7059
+								102,
+								102
 							]
 						],
 						"settings":
@@ -395,25 +417,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4272.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "messages.lua",
+					"file": "menu.lua",
 					"settings":
 					{
-						"buffer_size": 767,
+						"buffer_size": 1533,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								488,
-								467
+								649,
+								649
 							]
 						],
 						"settings":
@@ -432,20 +454,21 @@
 					"file": "dot.lua",
 					"settings":
 					{
-						"buffer_size": 968,
+						"buffer_size": 1145,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								959,
-								959
+								912,
+								916
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Lua/Lua.tmLanguage"
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -455,22 +478,77 @@
 				},
 				{
 					"buffer": 4,
-					"file": "starfield.lua",
+					"file": "messages.lua",
 					"settings":
 					{
-						"buffer_size": 557,
+						"buffer_size": 768,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								422,
-								422
+								768,
+								768
 							]
 						],
 						"settings":
 						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "starfield.lua",
+					"settings":
+					{
+						"buffer_size": 1413,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1215,
+								1215
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "colors.lua",
+					"settings":
+					{
+						"buffer_size": 136,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "colors = {}",
 							"syntax": "Packages/Lua/Lua.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -486,7 +564,7 @@
 			"sheets":
 			[
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "todo.txt",
 					"settings":
 					{
