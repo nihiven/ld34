@@ -13,19 +13,22 @@ require('logic')
 
 summary = {
 	draw = function(self)
-		local score = string.rep('0', 6-#tostring(game.score)) .. tostring(game.score)
 		local sw = love.graphics.getWidth()
+		local offset = fonts.large:getHeight()
 
-		-- draw stats
 		love.graphics.setFont(fonts.large)
+		love.graphics.setColor(colors.uiScoreMessage)
 
-		love.graphics.setColor(colors.uiShadow)
-		love.graphics.printf('Score: ' .. score, 15+3, 15+3, sw, 'left')
-		love.graphics.printf('Level: ' .. game.level, -15+3, 15+3, sw, 'right')
+		local messages = {}
+		if (game.won == true) then
+			messages = {'You Won!', 'Score: ' .. game.score }
+		else
+			messages = {'The dot ate you!', 'Score: ' .. game.score }
+		end
 
-		love.graphics.setColor(colors.ui)
-		love.graphics.printf('Score: ' .. score, 15, 15, sw, 'left')
-		love.graphics.printf('Level: ' .. game.level, -15, 15, sw, 'right')
+		for i = #messages, 1, -1 do
+				love.graphics.printf(messages[i], 0, offset*i, sw, 'center')
+		end
 	end
 }
 
@@ -35,7 +38,7 @@ entities = { menu, messages, starfield } -- all game entities
 
 ------[[ Love callbacks ]]------
 function love.load()
-	--love.window.setMode(3440, 1440, { fsaa=8, fullscreen=true, resizable=false, vsync=true })
+	love.window.setMode(3440, 1440, { fsaa=8, fullscreen=true, resizable=false, vsync=true })
 
 	-- load stuff
 	callEntities('load', game)
@@ -90,15 +93,21 @@ function love.handlers.errormessage(_text)
 	callEntities('errormessage', {text = _text})
 end
 
+function love.handlers.gamewon()
+	callEntities('gamewon', true)
+end
+
+function love.handlers.gamelost()
+	callEntities('gamelost', false)
+end
+
 ------[[ entity functions ]]------
 function callEntities(_f, _p)
 	-- check for and call each entity's _f 
-	if (#entities ~= 0) then
-		for i = #entities, 1, -1 do
-			if (entities[i][_f] ~= nil) then
-				entities[i][_f](entities[i], _p)
-			end		
-		end
+	for i = #entities, 1, -1 do
+		if (entities[i][_f] ~= nil) then
+			entities[i][_f](entities[i], _p)
+		end		
 	end
 end
 

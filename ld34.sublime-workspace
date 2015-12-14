@@ -67,7 +67,7 @@
 			"file": "main.lua",
 			"settings":
 			{
-				"buffer_size": 2180,
+				"buffer_size": 2849,
 				"line_ending": "Windows"
 			}
 		},
@@ -75,7 +75,7 @@
 			"file": "logic.lua",
 			"settings":
 			{
-				"buffer_size": 6884,
+				"buffer_size": 7337,
 				"line_ending": "Windows"
 			}
 		},
@@ -83,7 +83,7 @@
 			"file": "menu.lua",
 			"settings":
 			{
-				"buffer_size": 1668,
+				"buffer_size": 2008,
 				"line_ending": "Windows"
 			}
 		},
@@ -91,7 +91,7 @@
 			"file": "dot.lua",
 			"settings":
 			{
-				"buffer_size": 1665,
+				"buffer_size": 1857,
 				"line_ending": "Windows"
 			}
 		},
@@ -115,7 +115,7 @@
 			"file": "colors.lua",
 			"settings":
 			{
-				"buffer_size": 529,
+				"buffer_size": 567,
 				"line_ending": "Windows",
 				"name": "colors = {}"
 			}
@@ -124,7 +124,7 @@
 			"file": "todo.txt",
 			"settings":
 			{
-				"buffer_size": 160,
+				"buffer_size": 108,
 				"line_ending": "Windows"
 			}
 		},
@@ -132,7 +132,7 @@
 			"file": "game.lua",
 			"settings":
 			{
-				"buffer_size": 836,
+				"buffer_size": 912,
 				"line_ending": "Windows"
 			}
 		}
@@ -402,15 +402,15 @@
 					"file": "main.lua",
 					"settings":
 					{
-						"buffer_size": 2180,
+						"buffer_size": 2849,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								90,
-								90
+								1413,
+								1413
 							]
 						],
 						"settings":
@@ -419,7 +419,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 42.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -429,15 +429,15 @@
 					"file": "logic.lua",
 					"settings":
 					{
-						"buffer_size": 6884,
+						"buffer_size": 7337,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4305,
-								4305
+								5812,
+								5812
 							]
 						],
 						"settings":
@@ -446,7 +446,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1596.0,
+						"translation.y": 2515.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -456,15 +456,15 @@
 					"file": "menu.lua",
 					"settings":
 					{
-						"buffer_size": 1668,
+						"buffer_size": 2008,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								98,
-								98
+								494,
+								494
 							]
 						],
 						"settings":
@@ -483,15 +483,15 @@
 					"file": "dot.lua",
 					"settings":
 					{
-						"buffer_size": 1665,
+						"buffer_size": 1857,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								544,
-								546
+								891,
+								891
 							]
 						],
 						"settings":
@@ -564,15 +564,15 @@
 					"file": "colors.lua",
 					"settings":
 					{
-						"buffer_size": 529,
+						"buffer_size": 567,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								276,
-								276
+								291,
+								291
 							]
 						],
 						"settings":
@@ -589,7 +589,7 @@
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -597,15 +597,15 @@
 					"file": "todo.txt",
 					"settings":
 					{
-						"buffer_size": 160,
+						"buffer_size": 108,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								38,
-								38
+								0,
+								0
 							]
 						],
 						"settings":
@@ -623,15 +623,15 @@
 					"file": "game.lua",
 					"settings":
 					{
-						"buffer_size": 836,
+						"buffer_size": 912,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								355,
-								375
+								194,
+								194
 							]
 						],
 						"settings":
@@ -639,7 +639,7 @@
 							"syntax": "Packages/Lua/Lua.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 14.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},

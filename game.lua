@@ -2,6 +2,7 @@
 -- anything an entity could need that is related to scoring or game control should go here?
 
 game = { 
+	won = false,
 	paused = false,
 	
 	-- time
@@ -22,6 +23,7 @@ game = {
 	levelMax = 4,
 
 	newgame = function(self) -- fix please
+		self.won = false
 		self.paused = false
 		
 		-- time

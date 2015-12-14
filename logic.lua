@@ -103,8 +103,20 @@ logic = {
 			{ text = 'Quit', action = 'quit' }
 		}
 
+		game.newgame(game)
 		entities = { menu, messages, ui, logic, dot, starfield }
 		callEntities('load', game) -- start with a fresh game object
+	end,
+
+	gamewon = function(self)
+		game.won = true
+		entities = { summary, messages, starfield }
+		callEntities('load') -- start with a fresh game object
+	end,
+
+	gamelost = function(self)
+		entities = { summary, messages, starfield }
+		callEntities('load') -- start with a fresh game object
 	end,
 
 	load = function(self, _p)
@@ -113,6 +125,10 @@ logic = {
 
 	update = function(self, _p)
 		if (self.paused == true) then return end
+		if (game.timeElapsed > game.timeLimit) then
+			love.event.push('gamelost')
+			return
+		end
 		self.problems[1].age = self.problems[1].age + _p.dt
 	end,
 
@@ -171,8 +187,7 @@ logic = {
 						self.problems = problems.generate(game.level)
 						love.event.push('scoremessage', 'Level up!')
 					else
-						entities = { summary, starfield }
-						callEntities('load')
+						love.event.push('gamewon')
 					end
 				end
 			else
@@ -210,12 +225,12 @@ ui = {
 		love.graphics.setFont(fonts.large)
 
 		love.graphics.setColor(colors.uiShadow)
-		love.graphics.printf('Score: ' .. score, 15+3, 15+3, sw, 'left')
-		love.graphics.printf('Level: ' .. game.level, -15+3, 15+3, sw, 'right')
+		love.graphics.printf(score, -15+3, 15+3, sw, 'right')
+		love.graphics.printf('Level: ' .. game.level, 15+3, 15+3, sw, 'left')
 
 		love.graphics.setColor(colors.ui)
-		love.graphics.printf('Score: ' .. score, 15, 15, sw, 'left')
-		love.graphics.printf('Level: ' .. game.level, -15, 15, sw, 'right')
+		love.graphics.printf(score, -15, 15, sw, 'right')
+		love.graphics.printf('Level: ' .. game.level, 15, 15, sw, 'left')
 
 		-- draw score messages
 		local offset = fonts.large:getHeight()
