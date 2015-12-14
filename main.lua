@@ -17,17 +17,20 @@ summary = {
 		local offset = fonts.large:getHeight()
 
 		love.graphics.setFont(fonts.large)
-		love.graphics.setColor(colors.uiScoreMessage)
+		
+		local c = colors.uiScoreMessage
+		c[4] = 255
+		love.graphics.setColor(c)
 
-		local messages = {}
+		local m = {}
 		if (game.won == true) then
-			messages = {'You Won!', 'Score: ' .. game.score }
+			m = {'You Won!', 'Score: ' .. game.score }
 		else
-			messages = {'The dot ate you!', 'Score: ' .. game.score }
+			m = {'The dot ate you!', 'Score: ' .. game.score }
 		end
 
-		for i = #messages, 1, -1 do
-				love.graphics.printf(messages[i], 0, offset*i, sw, 'center')
+		for i = #m, 1, -1 do
+				love.graphics.printf(m[i], 0, offset*i, sw, 'center')
 		end
 	end
 }
