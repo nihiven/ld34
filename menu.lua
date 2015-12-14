@@ -49,10 +49,15 @@ menu = {
 		if (self.enabled == false) then return end
 
 		if (_p.k == 'up' and self.selected > 1) then
+			sounds.menuUp:stop()
+			sounds.menuUp:play()
 			self.selected = self.selected - 1
 		elseif (_p.k == 'down' and self.selected < #self.items) then
+			sounds.menuDown:stop()
+			sounds.menuDown:play()
 			self.selected = self.selected + 1
 		elseif (_p.k == 'return') then
+			sounds.choose:play()
 			love.event.push(self.items[self.selected].action)
 		end
 	end,

@@ -1,2 +1,5 @@
 # jb
 *.sublime-*
+*.sublime-workspace
+*.sublime-workspace
+*.sfs

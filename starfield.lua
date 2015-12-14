@@ -10,6 +10,7 @@ starfield = {
 			self.stars[i] = { x = math.random(0-(love.graphics.getWidth()*.50),love.graphics.getWidth()*1.5), y = math.random(0-(love.graphics.getHeight()*.50),love.graphics.getHeight()*1.5), color = {c, c, c} }
 			self.stars[i].scale = math.random(-5000,5000) / 100000
 		end
+
 	end,
 
 	draw = function(self)
@@ -29,9 +30,6 @@ starfield = {
 		for i = #self.stars, 1, -1 do
 			self.stars[i].x = self.stars[i].x + self.stars[i].scale
 			self.stars[i].y = self.stars[i].y + self.stars[i].scale
-
---			self.stars[i].x = self.stars[i].x + (_p.dt * self.stars[i].scale / 1000)
-	--		self.stars[i].y = self.stars[i].y + (_p.dt * self.stars[i].scale/ 1000)
 		end
 	end,
 

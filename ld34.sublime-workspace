@@ -67,7 +67,7 @@
 			"file": "main.lua",
 			"settings":
 			{
-				"buffer_size": 2849,
+				"buffer_size": 3004,
 				"line_ending": "Windows"
 			}
 		},
@@ -75,7 +75,7 @@
 			"file": "logic.lua",
 			"settings":
 			{
-				"buffer_size": 7337,
+				"buffer_size": 7893,
 				"line_ending": "Windows"
 			}
 		},
@@ -83,7 +83,7 @@
 			"file": "menu.lua",
 			"settings":
 			{
-				"buffer_size": 2008,
+				"buffer_size": 2132,
 				"line_ending": "Windows"
 			}
 		},
@@ -107,7 +107,7 @@
 			"file": "starfield.lua",
 			"settings":
 			{
-				"buffer_size": 1245,
+				"buffer_size": 1090,
 				"line_ending": "Windows"
 			}
 		},
@@ -115,7 +115,7 @@
 			"file": "colors.lua",
 			"settings":
 			{
-				"buffer_size": 567,
+				"buffer_size": 1154,
 				"line_ending": "Windows",
 				"name": "colors = {}"
 			}
@@ -132,7 +132,7 @@
 			"file": "game.lua",
 			"settings":
 			{
-				"buffer_size": 912,
+				"buffer_size": 943,
 				"line_ending": "Windows"
 			}
 		}
@@ -193,6 +193,14 @@
 	},
 	"file_history":
 	[
+		"/C/Users/nihiven/AppData/Local/Temp/7zO08EEC22B/simplex3d.glsl",
+		"/C/Users/nihiven/AppData/Local/Temp/7zO08E70694/hsv.glsl",
+		"/C/Users/nihiven/AppData/Local/Temp/7zO08EF0354/class.lua",
+		"/C/Users/nihiven/AppData/Local/Temp/7zO08E67434/input.lua",
+		"/C/Users/nihiven/AppData/Local/Temp/7zO06C7E3FA/e0005.lua",
+		"/C/Users/nihiven/AppData/Local/Temp/7zO8B056956/conf.lua",
+		"/C/Users/nihiven/AppData/Local/Temp/7zO8B0EB111/main.lua",
+		"/E/Google Drive/Code/ld34/main.lua",
 		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/colors.lua",
 		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/items.lua",
 		"/E/Google Drive/Code/Game Prototypes/love_test/ONiJ/main.lua",
@@ -286,6 +294,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"wind",
+			"screen",
 			"yello",
 			"newgame",
 			"fonts",
@@ -394,7 +404,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -402,15 +412,15 @@
 					"file": "main.lua",
 					"settings":
 					{
-						"buffer_size": 2849,
+						"buffer_size": 3004,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1413,
-								1413
+								950,
+								950
 							]
 						],
 						"settings":
@@ -429,15 +439,15 @@
 					"file": "logic.lua",
 					"settings":
 					{
-						"buffer_size": 7337,
+						"buffer_size": 7893,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5812,
-								5812
+								30,
+								30
 							]
 						],
 						"settings":
@@ -446,7 +456,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2515.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -456,15 +466,15 @@
 					"file": "menu.lua",
 					"settings":
 					{
-						"buffer_size": 2008,
+						"buffer_size": 2132,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								494,
-								494
+								46,
+								46
 							]
 						],
 						"settings":
@@ -490,8 +500,8 @@
 						"selection":
 						[
 							[
-								891,
-								891
+								7,
+								7
 							]
 						],
 						"settings":
@@ -517,8 +527,8 @@
 						"selection":
 						[
 							[
-								27,
-								31
+								370,
+								374
 							]
 						],
 						"settings":
@@ -537,15 +547,15 @@
 					"file": "starfield.lua",
 					"settings":
 					{
-						"buffer_size": 1245,
+						"buffer_size": 1090,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								31,
-								31
+								959,
+								959
 							]
 						],
 						"settings":
@@ -564,15 +574,15 @@
 					"file": "colors.lua",
 					"settings":
 					{
-						"buffer_size": 567,
+						"buffer_size": 1154,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								291,
-								291
+								1118,
+								1118
 							]
 						],
 						"settings":
@@ -589,7 +599,7 @@
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -623,15 +633,15 @@
 					"file": "game.lua",
 					"settings":
 					{
-						"buffer_size": 912,
+						"buffer_size": 943,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								194,
-								194
+								609,
+								609
 							]
 						],
 						"settings":
@@ -640,7 +650,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 123.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

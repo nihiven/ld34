@@ -66,10 +66,10 @@ problems = {
 				oper = operators[math.random(3,4)]
 
 				if (oper == '/') then -- no fractions
-					op2, ans = math.random(2,20), math.random(2,20)
+					op2, ans = math.random(2,20), math.random(10,20)
 					op1 = op2 * ans
 				else
-					op1, op2 = math.random(2,20), math.random(2,20)
+					op1, op2 = math.random(2,20), math.random(10,20)
 				end
 				
 				a = loadstring('ans = ' .. op1 .. '' .. oper .. '' .. op2)
@@ -115,6 +115,7 @@ logic = {
 	end,
 
 	gamelost = function(self)
+		game.won = false
 		entities = { summary, messages, starfield }
 		callEntities('load') -- start with a fresh game object
 	end,
@@ -144,10 +145,14 @@ logic = {
 		if (self.paused == true) then return end
 
 		if (string.find('0123456789', _p.k) ~= nil) then
+			sounds.keys:stop()
+			sounds.keys:play()
 			self.entry = self.entry .. _p.k
 		end
 
 		if (_p.k == 'backspace') then
+			sounds.keys:stop()
+			sounds.keys:play()
 			if (#self.entry == 1) then
 				self.entry = ''
 			elseif (#self.entry > 1) then
@@ -158,6 +163,7 @@ logic = {
 		if (_p.k == 'return') then
 			if (tonumber(self.entry) == self.problems[1].answer) then
 				-- clear entry buffer
+				sounds.correct:play()
 				self.entry = ''
 				love.event.push('scoremessage', 'Correct answer!')
 
@@ -191,6 +197,8 @@ logic = {
 					end
 				end
 			else
+				sounds.wrong:stop()
+				sounds.wrong:play()
 				game.incorrect = game.incorrect + 1
 				self.problems[1].incorrect = self.problems[1].incorrect + 1
 				love.event.push('errormessage', 'Wrong answer!')

@@ -10,8 +10,15 @@ require('dot')
 require('menu')
 require('logic')
 
-
 summary = {
+	load = function()
+		if (game.won == true) then
+			sounds.win:play()
+		else
+			sounds.lose:play()
+		end
+	end,
+
 	draw = function(self)
 		local sw = love.graphics.getWidth()
 		local offset = fonts.large:getHeight()
@@ -41,10 +48,11 @@ entities = { menu, messages, starfield } -- all game entities
 
 ------[[ Love callbacks ]]------
 function love.load()
-	love.window.setMode(3440, 1440, { fsaa=8, fullscreen=true, resizable=false, vsync=true })
+	love.window.setMode(3440, 1440, { msaa=8, fullscreen=true, resizable=false, vsync=true })
 
 	-- load stuff
 	callEntities('load', game)
+	sounds.glitchRock:play()
 end
 
 function love.draw()

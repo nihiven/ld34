@@ -6,7 +6,7 @@ game = {
 	paused = false,
 	
 	-- time
-	timeLimit = 180,
+	timeLimit = 10,
 	timeElapsed = 0,
 
 	-- scoring
@@ -27,7 +27,7 @@ game = {
 		self.paused = false
 		
 		-- time
-		self.timeLimit = 180
+		self.timeLimit = 18
 		self.timeElapsed = 0
 
 		-- scoring
