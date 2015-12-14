@@ -8,6 +8,7 @@ colors.deepSkyBlue = { 0, 191, 255 }
 colors.ui = { 7, 80, 110 }
 colors.uiShadow = { 75, 75, 75, 50 }
 colors.uiScoreMessage = { 253, 126, 0 }
+colors.uiErrorMessage = { 253, 0, 0 }
 
 fonts = {
 	small = love.graphics.setNewFont('data/neon.ttf', 24),

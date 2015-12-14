@@ -12,6 +12,14 @@ menu = {
 	draw = function(self)
 		if (self.enabled == false) then return end
 
+		-- draw background
+		local rx, ry, rw, rh = love.graphics.getWidth()*.25, love.graphics.getHeight()*.25, _scrMid().x, _scrMid().y
+		love.graphics.setColor(colors.white)
+		love.graphics.rectangle('fill', rx-2, ry-2, rw+4, rh+4)
+		love.graphics.setColor(colors.black)
+		love.graphics.rectangle('fill', rx, ry, rw, rh)
+
+		-- draw menu items
 		local y = _scrMid().y - (#self.items / 2 * self.font:getHeight())
 
 		love.graphics.setFont(self.font)

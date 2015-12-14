@@ -1,7 +1,3 @@
-add background to 
- - in game menu
- - title screen
-
 change display of / and *
 
 replace self.paused with game.paused

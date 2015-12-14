@@ -1,5 +1,6 @@
 dot = {
 	paused = false,
+	rotation = 0,
 
 	load = function(self, _g)
 		self.radius = 1
@@ -18,18 +19,20 @@ dot = {
 		self.radiusStep = self.radiusMax / _g.timeLimit
 
 		-- for image
-		--self.image = love.graphics.newImage('need_to_replace_earth.png')
+		--self.image = love.graphics.newImage('data/blackhole.png')
 	end,
 
 	draw = function(self)
 		-- draw a nice circle
-		love.graphics.setColor(colors.deepSkyBlue)
+		love.graphics.setColor(colors.black)
+		--love.graphics.setColor({100,100,100})
 		love.graphics.circle('fill', self.x, self.y, self.radius, 4096)
 
 		--- draw earth
 		love.graphics.setColor(colors.white)
-		self.offset = (self.scaleFactor * ((love.graphics.getWidth() / 2790) * 2790)) / 2
-		--love.graphics.draw(self.image, self.x, self.y, 0, self.scaleFactor, self.scaleFactor, self.offset, self.offset)
+		self.offset = (self.scaleFactor * ((love.graphics.getWidth() / 778) * 778)) / 2
+		--love.graphics.draw(self.image, self.x, self.y, self.rotation, self.scaleFactor, self.scaleFactor, 997, 573.5)
+		--love.graphics.draw(self.image, self.x, self.y, self.rotation, self.scaleFactor, self.scaleFactor, 389, 389)
 	end,
 
 	update = function(self, _p)
@@ -41,7 +44,9 @@ dot = {
 		self.radius = self.radius + (self.radiusStep * _p.dt)
 
 		-- for image
-		self.scaleFactor = (_p.g.timeElapsed / _p.g.timeLimit) * (love.graphics.getWidth() / 2790)
+		self.scaleFactor = (_p.g.timeElapsed / _p.g.timeLimit) * (love.graphics.getWidth() / 778)
+
+		self.rotation = self.rotation + _p.dt
 	end,
 
 	gamepaused = function(self)

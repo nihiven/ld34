@@ -10,7 +10,7 @@ problems = {
 
 		if (_level == 1) then
 			-- single digit addition and subtraction
-			local count = 10
+			local count = 1
 
 			for i = count, 1, -1 do
 				oper = operators[math.random(1,2)]
@@ -26,7 +26,7 @@ problems = {
 			end
 		elseif (_level == 2) then
 			-- single digit multiplication and division
-			local count = 10
+			local count = 1
 
 			for i = count, 1, -1 do
 				oper = operators[math.random(3,4)]
@@ -44,7 +44,7 @@ problems = {
 			end
 		elseif (_level == 3) then
 			-- double digit addition and subtraction
-			local count = 5
+			local count = 1
 
 			for i = count, 1, -1 do
 				oper = operators[math.random(1,2)]
@@ -60,7 +60,7 @@ problems = {
 			end			
 		elseif (_level == 4) then
 			-- double digit multiplication and division
-			local count = 5
+			local count = 1
 
 			for i = count, 1, -1 do
 				oper = operators[math.random(3,4)]
@@ -85,6 +85,7 @@ problems = {
 --- this will handle game logic, key presses etc during play
 logic = {
 	paused = false,
+	gameOver = false,
 	problems = {},
 	problemsSolved = {},
 
@@ -139,10 +140,10 @@ logic = {
 		end
 
 		if (_p.k == 'return') then
-			_m(self.problems[1].answer)
 			if (tonumber(self.entry) == self.problems[1].answer) then
 				-- clear entry buffer
 				self.entry = ''
+				love.event.push('scoremessage', 'Correct answer!')
 
 				-- calculate score as steps so you can add messages
 				local points = game.scoreBase 
@@ -152,7 +153,6 @@ logic = {
 				if (self.problems[1].age < game.scoreSpeedTime) then 
 					points = points * tonumber(game.scoreSpeedMultiplier)
 					love.event.push('scoremessage', 'TIME BONUS: +' .. tostring(100*tonumber(game.scoreSpeedMultiplier)) .. '%')
-					
 				end
 
 				love.event.push('scoremessage', '+' .. tostring(points))
@@ -169,13 +169,16 @@ logic = {
 						-- next level
 						game.level = game.level + 1
 						self.problems = problems.generate(game.level)
+						love.event.push('scoremessage', 'Level up!')
 					else
-						--- beat the game
+						entities = { summary, starfield }
+						callEntities('load')
 					end
 				end
 			else
 				game.incorrect = game.incorrect + 1
 				self.problems[1].incorrect = self.problems[1].incorrect + 1
+				love.event.push('errormessage', 'Wrong answer!')
 			end
 		end
 	end,
@@ -195,7 +198,8 @@ logic = {
 	end
 }
 
-ui = {	
+ui = {
+	paused = false,
 	scoreMessages = {},
 
 	draw = function(self)
@@ -218,17 +222,18 @@ ui = {
 		for i = #self.scoreMessages, 1, -1 do
 			local m = self.scoreMessages[i]
 
-			local c = colors.uiScoreMessage
+			local c = m.color
 			c[4] = m.alpha
 
 			love.graphics.setColor(c)
 			love.graphics.printf(m.text, 0, m.y - offset, sw, 'center', 0)
 			offset = offset + fonts.large:getHeight()
 		end
-
 	end,
 
 	update = function(self, _p)
+		if (self.paused == true) then return end
+
 		for i = #self.scoreMessages, 1, -1 do
 			local m = self.scoreMessages[i]
 
@@ -247,10 +252,26 @@ ui = {
 	end,
 
 	scoremessage = function(self, _p)
-		local message = { text = _p.text, age = 1, fade = 1, y = 0, scale = 1 }
+		self.addMessage(self, _p, colors.uiScoreMessage)
+	end,
+
+	errormessage = function(self, _p)
+		self.addMessage(self, _p, colors.uiErrorMessage)
+	end,
+
+	addMessage = function(self, _p, _color)
+		local message = { text = _p.text, age = 1, fade = 1, y = 0, scale = 1, color = _color }
 		message.y = love.graphics.getHeight() * .4
 
 		table.insert(self.scoreMessages, message)
+	end,
+
+	gamepaused = function(self)
+		self.paused = true
+	end,
+
+	gameresumed = function(self)
+		self.paused = false
 	end
-	
+
 }
